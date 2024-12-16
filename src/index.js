@@ -13,7 +13,7 @@ app.set('port', process.env.PORT || 3000)
 app.set('views', join(__dirname, 'views'))
 app.engine('.hbs', engine({
     defaultlayout: 'main',
-    layoutDir: join(app.get('views'), 'layouts'),
+    layoutsDir: join(app.get('views'), 'layouts'),
     partialsDir: join(app.get('views'), 'partials'),
     extname: '.hbs'
 }));
@@ -25,7 +25,7 @@ app.use(express.json());
 
 //Routes
 app.get("/", (req, res)=>{
-    res.json({"message": "Hola"});
+    res.render('index')
 })
 //Public Files
 app.use(express.static(join(__dirname, 'public')))
