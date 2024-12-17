@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import {join, dirname, extname} from 'path'
 import { config } from 'process';
 import { fileURLToPath } from 'url';
+import personasRoutes from './routes/persona.routes.js';
 
 //Inicialization
 const app = express();
@@ -27,6 +28,9 @@ app.use(express.json());
 app.get("/", (req, res)=>{
     res.render('index')
 })
+
+app.use(personasRoutes);
+
 //Public Files
 app.use(express.static(join(__dirname, 'public')))
 //Run Server
